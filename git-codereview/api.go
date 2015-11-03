@@ -54,10 +54,7 @@ func loadGerritOrigin() {
 	if !strings.HasPrefix(origin, "https://") {
 		dief("git origin must be an https:// URL: %s", origin)
 	}
-	// https:// prefix and then one slash between host and top-level name
-	if strings.Count(origin, "/") != 3 {
-		dief("git origin is malformed: %s", origin)
-	}
+
 	host := origin[len("https://"):strings.LastIndex(origin, "/")]
 
 	// In the case of Google's Gerrit, host is go.googlesource.com
